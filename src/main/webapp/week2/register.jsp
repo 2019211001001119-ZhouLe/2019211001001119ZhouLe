@@ -43,12 +43,11 @@
     <title>Title</title>
 </head>
 <body>
-<form name="myForm">
-    Please use keyboard input<br/>
-    Name* :<input type="text" name="name" onkeyup="validation()"><br/>
-    password* :<input type="text" name="id" onkeyup="validation()"><br/>
-    E-mail* :<input type="text" name="email" onkeyup="validation()"><br/>
-    Birthdate* :<input type="text" name="birthdate" onkeyup="validation()"><br/>
+<form name="myForm" method="post">
+    Name* :<input type="text" name="name" onkeyup="validation()" autocomplete="off"><br/>
+    password* :<input type="text" name="id" onkeyup="validation()" autocomplete="off"><br/>
+    E-mail* :<input type="text" name="email" onkeyup="validation()" autocomplete="off"><br/>
+    Birthdate* :<input type="text" name="birthdate" onkeyup="validation()" autocomplete="off"><br/>
     sex* :<input type="radio" name="sex" value="0">male<input type="radio" name="sex" value="1">female<br/>
     <input type="submit" value="Click to submit">
 </form>
