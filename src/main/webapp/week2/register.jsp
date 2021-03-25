@@ -18,11 +18,11 @@
                 document.getElementsByName("name")[0].style.color="black";
             }
             var ext = /^.{8,}$/;
-            if(!ext.test(document.getElementsByName("id")[0].value)){
-                document.getElementsByName("id")[0].style.color="red";
+            if(!ext.test(document.getElementsByName("password")[0].value)){
+                document.getElementsByName("password")[0].style.color="red";
             }
             else {
-                document.getElementsByName("id")[0].style.color="black";
+                document.getElementsByName("password")[0].style.color="black";
             }
             ext = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
             if(!ext.test(document.getElementsByName("email")[0].value)){
@@ -43,12 +43,12 @@
     <title>Title</title>
 </head>
 <body>
-<form name="myForm" method="post">
+<form name="myForm" method="post" action="${pageContext.request.contextPath}/register">
     Name* :<input type="text" name="name" onkeyup="validation()" autocomplete="off"><br/>
-    password* :<input type="text" name="id" onkeyup="validation()" autocomplete="off"><br/>
+    password* :<input type="text" name="password" onkeyup="validation()" autocomplete="off"><br/>
     E-mail* :<input type="text" name="email" onkeyup="validation()" autocomplete="off"><br/>
     Birthdate* :<input type="text" name="birthdate" onkeyup="validation()" autocomplete="off"><br/>
-    sex* :<input type="radio" name="sex" value="0">male<input type="radio" name="sex" value="1">female<br/>
+    sex* :<input type="radio" name="sex" value="male">male<input type="radio" name="sex" value="female">female<br/>
     <input type="submit" value="Click to submit">
 </form>
 </body>
