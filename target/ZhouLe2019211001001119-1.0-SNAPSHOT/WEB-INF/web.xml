@@ -7,10 +7,10 @@
         <servlet-name>servletName</servlet-name>
         <servlet-class>com.ZhouLe.week2.helloServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.ZhouLe.week3.RegisterServlet</servlet-class>
-    </servlet>
+<!--    <servlet>-->
+<!--        <servlet-name>RegisterServlet</servlet-name>-->
+<!--        <servlet-class>com.ZhouLe.week3.RegisterServlet</servlet-class>-->
+<!--    </servlet>-->
 <!--    <servlet>-->
 <!--        <servlet-name>ConfigDemoServlet</servlet-name>-->
 <!--        <servlet-class>com.ZhouLe.week4.ConfigDemoServlet</servlet-class>-->
@@ -27,10 +27,10 @@
     <servlet-name>servletName</servlet-name>
     <url-pattern>/hello</url-pattern>
 </servlet-mapping>
-<servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
-    <url-pattern>/register</url-pattern>
-</servlet-mapping>
+<!--<servlet-mapping>-->
+<!--    <servlet-name>RegisterServlet</servlet-name>-->
+<!--    <url-pattern>/register</url-pattern>-->
+<!--</servlet-mapping>-->
 <!--<servlet-mapping>-->
 <!--    <servlet-name>ConfigDemoServlet</servlet-name>-->
 <!--    <url-pattern>/config</url-pattern>-->
