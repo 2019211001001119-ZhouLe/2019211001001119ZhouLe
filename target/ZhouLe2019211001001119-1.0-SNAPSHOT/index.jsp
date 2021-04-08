@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>JSP - Hello World</title>
-</head>
-<body>
+
+<%@include file="header.jsp"%>
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
-</body>
-</html>
+<br/>
+<a href="hello">student info week2</a>
+<br/>
+<a href="config">config week4</a>
+<br/>
+<%@include file="footer.jsp"%>

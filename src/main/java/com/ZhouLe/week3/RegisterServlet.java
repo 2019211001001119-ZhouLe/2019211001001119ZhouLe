@@ -3,6 +3,7 @@ package com.ZhouLe.week3;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -74,6 +75,7 @@ public class RegisterServlet extends HttpServlet {
                 writer.println("<td>"+rs.getString("email")+"</td>");
                 writer.println("<td>"+rs.getString("gender")+"</td>");
                 writer.println("<td>"+rs.getString("birthdate")+"</td>");
+
             }
             writer.println("</table>");
         } catch (SQLException e) {
