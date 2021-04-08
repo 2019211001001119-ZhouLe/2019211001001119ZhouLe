@@ -1,5 +1,7 @@
 package com.ZhouLe.week3;
 
+import com.ZhouLe.week4.JDBCDemoServlet;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -8,25 +10,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet(
-        urlPatterns = {"/register"},
-        initParams = {
-                @WebInitParam(name = "driver", value = "com.mysql.cj.jdbc.Driver"),
-                @WebInitParam(name = "url", value = "jdbc:mysql://localhost:3306/userdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"),
-                @WebInitParam(name = "username", value = "root"),
-                @WebInitParam(name = "password", value = "123456")
-        },loadOnStartup = 1
-)
+@WebServlet(name = "RegisterServlet",urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet {
     Connection conn = null;
     Statement stmt = null;
+
     @Override
     public void init() throws ServletException {
-        ServletConfig config = getServletConfig();
-        String driver = config.getInitParameter("driver");
-        String url = config.getInitParameter("url");
-        String username= config.getInitParameter("username");
-        String password= config.getInitParameter("password");
+        super.init();
+        ServletContext context = getServletContext();
+        String driver = context.getInitParameter("driver");
+        String url = context.getInitParameter("url");
+        String username= context.getInitParameter("username");
+        String password= context.getInitParameter("password");
 
         try {
             Class.forName(driver);
