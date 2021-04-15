@@ -17,21 +17,8 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();
-        ServletContext context = getServletContext();
-        String driver = context.getInitParameter("driver");
-        String url = context.getInitParameter("url");
-        String username= context.getInitParameter("username");
-        String password= context.getInitParameter("password");
-
-        try {
-            Class.forName(driver);
-            conn = DriverManager.getConnection(url, username, password);
-            stmt = conn.createStatement();
-            System.out.println(conn);
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
+        conn = (Connection) getServletContext().getAttribute("conn");
+        stmt = (Statement) getServletContext().getAttribute("stmt");
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
