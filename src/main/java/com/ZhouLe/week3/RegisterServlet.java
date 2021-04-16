@@ -40,6 +40,7 @@ public class RegisterServlet extends HttpServlet {
             stmt.executeUpdate(sql);
             sql = "select * from usertable";
             ResultSet rs = stmt.executeQuery(sql);
+            response.sendRedirect("login.jsp");
 
             writer.println("<table border=\"1\">");
             writer.println("<tr>");

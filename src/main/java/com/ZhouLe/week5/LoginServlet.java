@@ -29,14 +29,21 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String sql;
         PrintWriter writer = response.getWriter();
-        sql = "SELECT * from usertable where username ='"+name+"'and password ='"+password+"'";
+        sql = "SELECT * from usertable where username ='"+name+"' and password ='"+password+"'";
         try {
-            int i = 0;
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()) i++;
-            if(i==0)
-                writer.println("name or password wrong.");
+            if(!rs.next()) {
+                request.setAttribute("message","username or password wrong.");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
             else{
+                request.setAttribute("id",rs.getInt("id"));
+                request.setAttribute("username",name);
+                request.setAttribute("password",password);
+                request.setAttribute("email",rs.getString("email"));
+                request.setAttribute("gender",rs.getString("gender"));
+                request.setAttribute("birthdate",rs.getString("birthdate"));
+                request.getRequestDispatcher("userinfo.jsp").forward(request, response);
                 writer.println("Login Success!");
                 writer.println("welcome " + name);
             }
