@@ -1,5 +1,8 @@
 package com.ZhouLe.week5;
 
+import com.ZhouLe.dao.UserDao;
+import com.ZhouLe.model.User;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -20,35 +23,27 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-        String sql;
-        PrintWriter writer = response.getWriter();
-        sql = "SELECT * from usertable where username ='"+name+"' and password ='"+password+"'";
+
+        UserDao userDao = new UserDao();
         try {
-            ResultSet rs = stmt.executeQuery(sql);
-            if(!rs.next()) {
+            User user = userDao.findByUsernamePassword(conn, name, password);
+            if (user!=null) {
+                request.setAttribute("user", user);
+                request.getRequestDispatcher("WEB-INF/views/userinfo.jsp").forward(request,response);
+            }
+            else {
                 request.setAttribute("message","username or password wrong.");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request, response);
             }
-            else{
-                request.setAttribute("id",rs.getInt("id"));
-                request.setAttribute("username",name);
-                request.setAttribute("password",password);
-                request.setAttribute("email",rs.getString("email"));
-                request.setAttribute("gender",rs.getString("gender"));
-                request.setAttribute("birthdate",rs.getString("birthdate"));
-                request.getRequestDispatcher("userinfo.jsp").forward(request, response);
-                writer.println("Login Success!");
-                writer.println("welcome " + name);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 }
