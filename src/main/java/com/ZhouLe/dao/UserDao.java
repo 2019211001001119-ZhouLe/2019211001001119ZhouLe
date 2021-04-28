@@ -12,24 +12,27 @@ public class UserDao implements IUserDao{
     public boolean saveUser(Connection con, User user) throws SQLException {
         String sql = "INSERT INTO usertable (username,password,email,gender,birthdate) VALUES ('" + user.getUsername() + "', '" + user.getPassword() + "', '" + user.getEmail() + "', '" + user.getGender() + "', '" + user.getBirthdate() + "')";
         Statement stmt = con.createStatement();
-        stmt.executeUpdate(sql);
-        return false;
+        int n = stmt.executeUpdate(sql);
+        if(n>0)
+            return true;
+        else
+            return false;
     }
 
     @Override
     public int deleteUser(Connection con, User user) throws SQLException {
         String sql = "DELETE FROM usertable where id = "+user.getId();
         Statement stmt = con.createStatement();
-        stmt.executeUpdate(sql);
-        return 0;
+        int n = stmt.executeUpdate(sql);
+        return n;
     }
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
-        String sql = "UPDATE usertable username = '"+user.getUsername()+"', password = '"+user.getPassword()+"', email ='"+user.getEmail()+"', gender ='"+user.getGender()+"', birthdate = "+user.getBirthdate();
+        String sql = "UPDATE usertable set username = '"+user.getUsername()+"', password = '"+user.getPassword()+"', email ='"+user.getEmail()+"', gender ='"+user.getGender()+"', birthdate = "+user.getBirthdate()+" where id = "+user.getId();
         Statement stmt = con.createStatement();
-        stmt.executeUpdate(sql);
-        return 0;
+        int n = stmt.executeUpdate(sql);
+        return n;
     }
 
     @Override
