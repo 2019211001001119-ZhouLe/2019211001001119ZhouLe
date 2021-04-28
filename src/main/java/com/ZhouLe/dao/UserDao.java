@@ -29,7 +29,7 @@ public class UserDao implements IUserDao{
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
-        String sql = "UPDATE usertable set username = '"+user.getUsername()+"', password = '"+user.getPassword()+"', email ='"+user.getEmail()+"', gender ='"+user.getGender()+"', birthdate = "+user.getBirthdate()+" where id = "+user.getId();
+        String sql = "UPDATE usertable set username = '"+user.getUsername()+"', password = '"+user.getPassword()+"', email ='"+user.getEmail()+"', gender ='"+user.getGender()+"', birthdate = '"+user.getBirthdate()+"' where id = "+user.getId();
         Statement stmt = con.createStatement();
         int n = stmt.executeUpdate(sql);
         return n;
@@ -63,6 +63,7 @@ public class UserDao implements IUserDao{
         User user = null;
         if(rs.next()) {
             user = new User();
+            user.setId(rs.getInt("id"));
             user.setUsername(username);
             user.setPassword(password);
             user.setEmail(rs.getString("email"));

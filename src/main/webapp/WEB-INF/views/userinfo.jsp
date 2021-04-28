@@ -10,11 +10,13 @@
 <%
     Cookie [] allCookies = request.getCookies();
     for (Cookie c:allCookies) {
-        out.println("<br/>"+c.getName()+" --- "+c.getValue());
+        out.println(c.getName()+" --- "+c.getValue()+"<br/>");
     }
 %>
 <%
     User u=(User) session.getAttribute("user");
+    if(!(request.getAttribute("message")==null))
+        out.println(request.getAttribute("message")+"<br/>");
 %>
 
 <table>
@@ -28,6 +30,8 @@
         <td>gender</td><td><%= u.getGender() %></td>
     </tr><tr>
         <td>birth</td><td><%= u.getBirthdate() %></td>
-    </tr>
+    </tr><tr>
+</tr>
 </table>
+<a href="${pageContext.request.contextPath}/UpdateUser">Update user</a>
 <%@include file="footer.jsp"%>
