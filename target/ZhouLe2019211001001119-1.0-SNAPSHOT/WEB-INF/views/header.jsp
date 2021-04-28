@@ -41,7 +41,7 @@
                 out.println(username);
             }
             else
-                out.println("Geust");
+                out.println("Gust");
        %>
    </font>
    </font></td> </tr>
