@@ -41,12 +41,18 @@
                 out.println(username);
             }
             else
-                out.println("Gust");
+                out.println("Guest");
        %>
    </font>
    </font></td> </tr>
   <tr height="20"><td align="right">
-   <br> <a href="#">Logout</a>
+      <%
+          if(session.getAttribute("user")!=null){
+      %>
+   <br> <a href="${pageContext.request.contextPath}/logout">Logout</a>
+      <%
+          }
+      %>
   <br><a href="#">My Cart</a><br/>
 <a href="register.jsp">Register Here</a>
   </td></tr>

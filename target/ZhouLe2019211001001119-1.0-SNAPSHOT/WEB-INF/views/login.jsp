@@ -26,8 +26,8 @@
 %>
 
 <form name="myForm" method="post" action="${pageContext.request.contextPath}/login">
-userName :<input type="text" name="name" value="<%=username%>>" onkeyup="validation()" autocomplete="off"><br/>
-password :<input type="text" name="password" value="<%=password%>>" onkeyup="validation()" autocomplete="off"><br/>
+username :<input type="text" name="name" value="<%=username%>" onkeyup="validation()" autocomplete="off"><br/>
+password :<input type="text" name="password" value="<%=password%>" onkeyup="validation()" autocomplete="off"><br/>
     <input type="checkbox" name="rememberMe" value="1" <%=rememberMeVale.equals("1") ?"checked":""%>checked>RememberMe<br/>
 <input type="submit" value="Click to submit">
 </form>
