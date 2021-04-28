@@ -8,20 +8,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
 <%
-    User user =(User) request.getAttribute("user");
+    Cookie [] allCookies = request.getCookies();
+    for (Cookie c:allCookies) {
+        out.println("<br/>"+c.getName()+" --- "+c.getValue());
+    }
+%>
+<%
+    User u=(User) session.getAttribute("user");
 %>
 
 <table>
     <tr>
-        <td>username</td><td><%= user.getUsername() %></td>
+        <td>username</td><td><%= u.getUsername() %></td>
     </tr><tr>
-        <td>password</td><td><%= user.getPassword() %></td>
+        <td>password</td><td><%= u.getPassword() %></td>
     </tr><tr>
-        <td>email</td><td><%= user.getEmail() %></td>
+        <td>email</td><td><%= u.getEmail() %></td>
     </tr><tr>
-        <td>gender</td><td><%= user.getGender() %></td>
+        <td>gender</td><td><%= u.getGender() %></td>
     </tr><tr>
-        <td>birth</td><td><%= user.getBirthdate() %></td>
+        <td>birth</td><td><%= u.getBirthdate() %></td>
     </tr>
 </table>
 <%@include file="footer.jsp"%>
