@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("login");
 //        PrintWriter writer = response.getWriter();
 //        String sql;
 //        sql = "INSERT INTO usertable (username,password,email,gender,birthdate) VALUES  ('" + name + "', '" + password + "', '" + email + "', '" + sex + "', '" + birthdate + "')";
