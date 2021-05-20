@@ -86,7 +86,7 @@ public class Category {
         PreparedStatement pt = con.prepareStatement(sql);
         ResultSet rs = pt.executeQuery();
         while(rs.next()){
-            CategoryName = rs.getString("CategoryName")
+            CategoryName = rs.getString("CategoryName");
         }
         return CategoryName;
     }

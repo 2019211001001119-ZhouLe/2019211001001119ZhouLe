@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProductDao implements  IProductDao{
     @Override
-    public int save(Product product, Connection con) throws SQLException {
+    public int save(Product product,InputStream picture, Connection con) throws SQLException {
         int n = 0;
         String sql = "insert into product(ProductName,ProductDescription,Picture,price,CategoryID) values(?,?,?,?,?)";
         PreparedStatement pt = con.prepareStatement(sql);
@@ -20,7 +20,7 @@ public class ProductDao implements  IProductDao{
         pt.setString(2, product.getProductDescription());
         if(product.getPicture()!=null) {
             //for sql server
-            pt.setBinaryStream(3, product.getPicture());
+            pt.setBinaryStream(3, picture);
             //for mysql
             //   pt.setBlob(3, product.getPicture());
         }

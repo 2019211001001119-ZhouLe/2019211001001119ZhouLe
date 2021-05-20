@@ -40,9 +40,9 @@ public class LoginServlet extends HttpServlet {
                     Cookie usernameCookie = new Cookie("cUsername", user.getUsername());
                     Cookie passwordCookie = new Cookie("cUsername", user.getUsername());
                     Cookie rememberMeCookie = new Cookie("cUsername", rememberMe);
-                    usernameCookie.setMaxAge(5);
-                    passwordCookie.setMaxAge(5);
-                    rememberMeCookie.setMaxAge(5);
+                    usernameCookie.setMaxAge(5*60);
+                    passwordCookie.setMaxAge(5*60);
+                    rememberMeCookie.setMaxAge(5*60);
                     response.addCookie(usernameCookie);
                     response.addCookie(passwordCookie);
                     response.addCookie(rememberMeCookie);
