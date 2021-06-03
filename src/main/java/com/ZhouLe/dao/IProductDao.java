@@ -14,7 +14,7 @@ public interface IProductDao {
 	 * Insert a product
 	 * @return int
 	 */
-	public int save(Product product,InputStream picture, Connection con) throws SQLException;
+	public int save(Product product, Connection con) throws SQLException;
 	/**
 	 * Delete a product by productId
 	 * @return int

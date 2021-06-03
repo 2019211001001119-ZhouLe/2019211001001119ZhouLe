@@ -11,7 +11,7 @@ import java.io.IOException;
 public class FrontEndAuthenticationFilter implements Filter {
     private HttpServletRequest httpRequest;
     private static final String[] loginRequiredURLs = {
-            "/updateUser", "/logout", "myCart"
+            "/updateUser", "/logout", "/myCart"
     };
     public void init(FilterConfig config) throws ServletException {
     }
