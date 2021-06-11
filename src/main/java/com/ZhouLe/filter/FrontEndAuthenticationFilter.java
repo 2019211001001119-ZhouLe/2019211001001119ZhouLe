@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter("/admin/*")
 public class FrontEndAuthenticationFilter implements Filter {
     private HttpServletRequest httpRequest;
     private static final String[] loginRequiredURLs = {
